@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "609495864065",
+    "project_id": "schoolgate-22cb7",
+    "storage_bucket": "schoolgate-22cb7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:609495864065:android:63db79ec81a739fd534100",
+        "android_client_info": {
+          "package_name": "com.asp48.SchoolGate"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "609495864065-7npprv8nth8uktupaih5msf3vma58jup.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.asp48.SchoolGate",
+            "certificate_hash": "a1ad26b11584663691fea0e76db2d2c7cdb94343"
+          }
+        },
+        {
+          "client_id": "609495864065-jtd8gc9cpvjh536buop4hb6me8as3gnu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAh7II--3LGYY6Iy6rkbNkInX8C1BYesSE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "609495864065-jtd8gc9cpvjh536buop4hb6me8as3gnu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
