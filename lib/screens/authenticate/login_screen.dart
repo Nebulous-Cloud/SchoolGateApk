@@ -4,9 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:SchoolGate/services/auth.dart';
 import 'package:SchoolGate/utilities/constants.dart';
 
-/// My take on the login screen, some features shown but not implemented.
-/// Refrain from changing, should be final. -- Joel
-
+/// Login screen
 class LoginScreen extends StatefulWidget {
   @override
   _LoginScreenState createState() => _LoginScreenState();
@@ -23,6 +21,7 @@ class _LoginScreenState extends State<LoginScreen> {
 
   bool _rememberMe = false;
 
+  // Email user input
   Widget _buildEmailTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -37,7 +36,6 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: loginDetailBoxStyle,
           height: 60.0,
           child: TextField(
-            // key: _formkey,
             onChanged: (String value) {
               email = value;
             },
@@ -62,6 +60,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  // Password user input
   Widget _buildPasswordTF() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -76,7 +75,6 @@ class _LoginScreenState extends State<LoginScreen> {
           decoration: loginDetailBoxStyle,
           height: 60.0,
           child: TextField(
-            // key: _formkey,
             onChanged: (String value) {
               pass = value;
             },
@@ -101,6 +99,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  // Forget password button
   Widget _buildForgotPasswordBtn() {
     return Container(
       alignment: Alignment.centerRight,
@@ -115,6 +114,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  // Check box for remembering password
   Widget _buildRememberMeCheckbox() {
     return Container(
       height: 20.0,
@@ -142,12 +142,14 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
+  // Alert widget when login failed
   Widget showAlert() {
     if (error != '') {
       return Container(
         color: Colors.redAccent,
         width: double.infinity,
-        padding: EdgeInsets.all(20.0),
+        height: 100.0,
+        padding: EdgeInsets.only(top: 15, bottom: 10),
         child: Row(
           children: <Widget>[
             Icon(Icons.error_outline),
@@ -155,7 +157,8 @@ class _LoginScreenState extends State<LoginScreen> {
               child: Text(
                 error,
                 style: TextStyle(
-                  fontWeight: FontWeight.bold
+                  fontWeight: FontWeight.bold,
+                  fontSize: 16.0
                 ),
               )
             )
@@ -166,6 +169,7 @@ class _LoginScreenState extends State<LoginScreen> {
     return SizedBox(height: 0,);
   }
 
+  // Login button
   Widget _buildLoginBtn() {
     return Container(
       padding: EdgeInsets.symmetric(vertical: 25.0),

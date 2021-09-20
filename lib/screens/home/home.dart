@@ -1,7 +1,8 @@
-import 'package:SchoolGate/screens/features/chat.dart';
-import 'package:SchoolGate/screens/features/grades.dart';
-import 'package:SchoolGate/screens/features/schedule.dart';
-import 'package:SchoolGate/screens/features/timetable.dart';
+import 'package:SchoolGate/screens/features/chatbot/chat.dart';
+import 'package:SchoolGate/screens/features/grades/grades.dart';
+import 'package:SchoolGate/screens/features/schedule/schedule.dart';
+import 'package:SchoolGate/screens/features/timetable/timetable.dart';
+import 'package:SchoolGate/utilities/iconList.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:SchoolGate/services/auth.dart';
@@ -20,7 +21,7 @@ class Home extends StatelessWidget {
   /// do not touch -- Joel
   ///
 
-  User? currUser;
+  User currUser;
   String id = '';
   
   void initialiseUser() {
@@ -28,7 +29,7 @@ class Home extends StatelessWidget {
     currUser = auth.currentUser;
   }
 
-  String getUserId(User? user) {
+  String getUserId(User user) {
     if (user != null) {
       return user.uid.toString();
     } else {
@@ -50,71 +51,144 @@ class Home extends StatelessWidget {
           centerTitle: true,
           backgroundColor: Colors.teal,
           actions: <Widget>[
-            ElevatedButton(
-              onPressed: () async {
-                await _auth.signOut();
-              },
-              child: Text('Sign out')
-            ),
+              ElevatedButton.icon(
+                  icon: Icon(Icons.logout,
+                      color: Colors.white
+                  ),
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(Colors.teal),
+                    foregroundColor: MaterialStateProperty.all(Colors.teal),
+                    fixedSize: MaterialStateProperty.all(
+                      Size.fromRadius(70),
+                    ),
+                  ),
+
+                  onPressed: () async {
+                    await _auth.signOut();
+                  },
+                  label: Text('SignOut')
+              ),
           ],
         ),
         body: Container(
-          padding: EdgeInsets.all(20),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Column(
-                children: <Widget> [
-                  ElevatedButton(
-                      onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(builder: (context) => Timetable()),
-                          );
-                      },
-                      child: Text('Timetable')
-                  ),
-                  ElevatedButton(
-                      onPressed: () {
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Grades()),
-                        );
-                      },
-                      child: Text('Grades')
-                  ),
-                  ]
-              ),
-              Column(
-                  children: <Widget> [
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Schedule()),
-                        );
-                        },
-                        child: Text('Schedule')
-                    ),
-                    ElevatedButton(
-                        onPressed: () {
-                          Navigator.push(
-                          context,
-                          MaterialPageRoute(builder: (context) => Chat()),
-                        );
-                        },
-                        child: Text('Chat')
-                    ),
-                  ]
-              ),
-              // AssetList()
-            ],
+          child: SingleChildScrollView(
+            padding: EdgeInsets.fromLTRB(20.0, 100.0, 20.0, 0.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Column(
+                    children: <Widget> [
+
+                      ElevatedButton.icon(
+
+                          icon:
+                          IconFont(
+                            color: Colors.black,
+                            iconName: IconList.TIMETABLE,
+                            size: 40,
+                          ),
+
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.teal),
+                            foregroundColor: MaterialStateProperty.all(Colors.white),
+                            fixedSize: MaterialStateProperty.all(
+                              Size.fromRadius(70),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Timetable()),
+                            );
+                          },
+                          label: Text('Timetable')
+                      ),
+                      ElevatedButton.icon(
+
+                          icon:
+                          IconFont(
+                            color: Colors.black,
+                            iconName: IconList.GRADES,
+                            size: 40,
+                          ),
+                          // Icon(Icons.calendar_today_rounded
+                          // ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
+                            foregroundColor: MaterialStateProperty.all(Colors.teal),
+                            fixedSize: MaterialStateProperty.all(
+                              Size.fromRadius(70),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Grades()),
+                            );
+                          },
+                          label: Text('Grades')
+                      ),
+                    ]
+                ),
+                Column(
+
+                    children: <Widget> [
+                      ElevatedButton.icon(
+
+                          icon:
+                          IconFont(
+                            color: Colors.black,
+                            iconName: IconList.SCHEDULE,
+                            size: 40,
+                          ),
+                          // Icon(Icons.calendar_today_rounded
+                          // ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.white),
+                            foregroundColor: MaterialStateProperty.all(Colors.teal),
+                            fixedSize: MaterialStateProperty.all(
+                              Size.fromRadius(70),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Schedule()),
+                            );
+                          },
+                          label: Text('Schedule')
+                      ),
+                      ElevatedButton.icon(
+
+                          icon:
+                          IconFont(
+                            color: Colors.black,
+                            iconName: IconList.CHAT,
+                            size: 40,
+                          ),
+                          // Icon(Icons.calendar_today_rounded
+                          // ),
+                          style: ButtonStyle(
+                            backgroundColor: MaterialStateProperty.all(Colors.teal),
+                            foregroundColor: MaterialStateProperty.all(Colors.white),
+                            fixedSize: MaterialStateProperty.all(
+                              Size.fromRadius(70),
+                            ),
+                          ),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(builder: (context) => Chat()),
+                            );
+                          },
+                          label: Text('Chat')
+                      ),
+                    ]
+                ),
+                // AssetList()
+              ],
+            ),
           ),
-        ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: null,
-          child: Text(''),
-          backgroundColor: Colors.teal,
         ),
       ),
     );
@@ -154,8 +228,8 @@ class NavigationDrawerWidget extends StatelessWidget {
 
   buildMenuItem(
       BuildContext context, {
-        required String text,
-        required IconData icon
+        String text,
+        IconData icon
         }
       ) {
     final color = Colors.white;
@@ -169,3 +243,24 @@ class NavigationDrawerWidget extends StatelessWidget {
     );
   }
 }
+
+class IconFont extends StatelessWidget {
+
+  Color color;
+  double size;
+  String iconName;
+
+  IconFont({this.color, this.size, this.iconName});
+
+  @override
+  Widget build(BuildContext context) {
+    return Text(this.iconName,
+      style: TextStyle(
+        color: this.color,
+        fontSize: this.size,
+        fontFamily: 'sgate'
+      ),
+    );
+  }
+}
+

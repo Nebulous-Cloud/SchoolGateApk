@@ -13,7 +13,7 @@ class AuthService {
   }
 
   // create user object
-  AccountUser? _userFromFirebaseUser(User? user) {
+  AccountUser _userFromFirebaseUser(User user) {
     if(user != null) {
       return AccountUser(uid: user.uid);
     } else {
@@ -22,7 +22,7 @@ class AuthService {
   }
 
   // auth user stream
-  Stream<AccountUser?> get user {
+  Stream<AccountUser> get user {
     return _auth.authStateChanges().map(_userFromFirebaseUser);
   }
 
@@ -42,7 +42,7 @@ class AuthService {
   Future signInWithEmailAndPass (String email, String password) async {
     try {
       UserCredential result = await _auth.signInWithEmailAndPassword(email: email, password: password);
-      User? user = result.user;
+      User user = result.user;
       return _userFromFirebaseUser(user);
     } catch(e) {
       print(e.toString());

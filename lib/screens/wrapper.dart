@@ -8,12 +8,12 @@ import 'package:SchoolGate/screens/home/home.dart';
 /// Should be final. -- Joel
 
 class Wrapper extends StatelessWidget {
-  const Wrapper({ Key? key }) : super(key: key);
+  const Wrapper({ Key key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
 
-    final user = Provider.of<AccountUser?>(context);
+    final user = Provider.of<AccountUser>(context);
 
 // switch to login in screen if logged out
 // switch to home screen if logged in

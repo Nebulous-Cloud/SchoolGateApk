@@ -1,16 +1,31 @@
-# testing
+# SchoolGate
 
-A new Flutter project.
+Source code deliverables for CM2020 Agile Software Projects
 
-## Getting Started
+The examiner may use the following login credentials to test the app:
+- Email: user1@asp.com
+- Password: 123456
 
-This project is a starting point for a Flutter application.
+Take note that all databases linked to the app, including the ability to log in, will be kept up for at least four months from the submission date.
 
-A few resources to get you started if this is your first Flutter project:
+## Installation on Android emulator
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+### Prerequisites
+An android emulator must be installed on your device, see [how to download and run an Android emulator](https://developer.android.com/studio/run/emulator)
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Environments like Android Studios, Visual Studio or Visual Studio Code should be installed along with Flutter and Dart plugins.
+- For Android Studios [Flutter](https://plugins.jetbrains.com/plugin/9212-flutter) and [Dart](https://plugins.jetbrains.com/plugin/6351-dart).
+- For Visual Studio Code [Flutter](https://marketplace.visualstudio.com/items?itemName=Dart-Code.flutter) and [Dart](https://marketplace.visualstudio.com/items?itemName=Dart-Code.dart-code).
+
+### Running the app on emulator
+Import the project folder into your environment, you may need to enable plugin access when prompted. Otherwise, manually enable at least Dart and Flutter plugins.
+
+Run the emulator on your device and configure your environment to detect it.
+- [How to configure in Android Studios](https://developer.android.com/studio/run/emulator).
+- [How to configure in Visual Studio Code](https://visualstudio.microsoft.com/vs/msft-android-emulator/).
+
+Run/Debug the project into the emulator, take note that an active internet access is required for you to access the database for services like sign-in and timetable interaction etc.
+
+## Installation on Android device
+
+WIP -- Joel

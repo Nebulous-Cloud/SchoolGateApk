@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 class DatabaseService {
 
   final String uid;
-  DatabaseService({ required this.uid });
+  DatabaseService({this.uid });
   Tokeniser tokeniser = new Tokeniser();
 
   // reference a collection
@@ -24,12 +24,16 @@ class DatabaseService {
           name: doc.get('name') ?? '',
           id: doc.id,
           studentName: doc.get('studentName') ?? '',
-          timeslot: tokeniser.tokeniseToSlots(doc.get('timetable'))
+          timeslot: tokeniser.tokeniseToTimeslots(doc.get('timetable')),
+          gradeslot: tokeniser.tokeniseToGradeslot(doc.get('grades')),
+          scheduleslot: tokeniser.tokeniseToScheduleslot(doc.get('schedule'))
         );
       } else {
         return UserAsset(
         name: 'nill',
-        timeslot: []
+        timeslot: [],
+        gradeslot: [],
+        scheduleslot: []
         );
       }
     }).toList();

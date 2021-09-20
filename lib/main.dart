@@ -20,11 +20,12 @@ class MyApp extends StatelessWidget {
       // Initialize FlutterFire
       future: Firebase.initializeApp(),
       builder: (context, snapshot) {
-        return StreamProvider<AccountUser?>.value(
+        return StreamProvider<AccountUser>.value(
           value: AuthService().user,
           initialData: null,
           child: MaterialApp(
             home: Wrapper(),
+            debugShowCheckedModeBanner: false,
             ),
         );
       },
